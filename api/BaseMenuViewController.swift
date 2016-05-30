@@ -16,6 +16,7 @@ class BaseMenuViewController: BaseViewController
     
     override func viewDidLoad()
     {
+        super.viewDidLoad()
         let hamburger = UIImage(named: "hamburger")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: hamburger, style: .Plain, target: self.navigationController, action: #selector(ContainerNavigationController.openMenu))
     }

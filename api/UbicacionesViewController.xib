@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <viewController id="gzM-FO-wWw">
+        <viewController id="gzM-FO-wWw" customClass="UbicacionesViewController" customModule="api" customModuleProvider="target">
             <layoutGuides>
                 <viewControllerLayoutGuide type="top" id="RmL-JR-kbh"/>
                 <viewControllerLayoutGuide type="bottom" id="Ny5-K5-Nbc"/>

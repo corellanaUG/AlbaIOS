@@ -8,19 +8,14 @@
 
 import Foundation
 
-class MenuViewController: UIViewController, UITableViewDataSource
+class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     @IBOutlet weak var tblMenu: UITableView!
     
     var contentViewController:ContainerNavigationController!
     {
         //Cuando inicia la app, mostrar el primer view controller del menú por default
-        didSet
-        {
-            let firstNib = UINib(nibName: items[0].nibName, bundle: nil)
-            let firstVc = firstNib.instantiateWithOwner(nil, options: nil)[0] as! UIViewController
-            contentViewController.viewControllers = [firstVc]
-        }
+        didSet {  selectItem(0)  }
     }
     
     //Opciones que aparecen en el menú
@@ -45,7 +40,10 @@ class MenuViewController: UIViewController, UITableViewDataSource
         //Registrar celdas para la tabla
         let menuItemNib = UINib(nibName: "MenuItemCell", bundle: nil)
         tblMenu.registerNib(menuItemNib, forCellReuseIdentifier: menuItemCellID)
+        
+        //Settear delegate y datasource
         tblMenu.dataSource = self
+        tblMenu.delegate = self
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,6 +58,30 @@ class MenuViewController: UIViewController, UITableViewDataSource
         cell.imgIcono.image = UIImage(named: item.iconName)
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        selectItem(indexPath.row)
+    }
+    
+    func selectItem(position:Int)
+    {
+        let nib = UINib(nibName: items[position].nibName, bundle: nil)
+        let vc = nib.instantiateWithOwner(nil, options: nil)[0] as! UIViewController
+        contentViewController.viewControllers = [vc]
+        contentViewController.menuVC?.hideMenuViewController()
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view =  UIView()
+        view.frame = CGRectMake(0, 0, tableView.frame.width, 0.1)
+        view.backgroundColor = UIColor.lightGrayColor()
+        return view
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.5
     }
 }
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CinesViewController: BaseMenuViewController, UITableViewDataSource
+class CinesViewController: BaseMenuViewController, UITableViewDataSource, UITableViewDelegate
 {
     @IBOutlet weak var tblCines: UITableView!
     
@@ -33,6 +33,7 @@ class CinesViewController: BaseMenuViewController, UITableViewDataSource
     func llenarTabla()
     {
         tblCines.dataSource = self
+        tblCines.delegate = self
         tblCines.reloadData()
     }
     
@@ -43,11 +44,27 @@ class CinesViewController: BaseMenuViewController, UITableViewDataSource
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = UITableViewCell()
-        
         let cine = cines[indexPath.row]
-        
         cell.textLabel?.text = cine["Name"] as? String
-        
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        let cine = cines[indexPath.row]
+        let vc = UIViewController()
+        vc.title = cine["Name"] as? String
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view =  UIView()
+        view.frame = CGRectMake(0, 0, tableView.frame.width, 0.1)
+        view.backgroundColor = UIColor.lightGrayColor()
+        return view
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.5
     }
 }

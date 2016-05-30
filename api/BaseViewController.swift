@@ -10,6 +10,11 @@ import Foundation
 
 class BaseViewController : UIViewController
 {
+    override func viewDidLoad()
+    {
+        self.view.clipsToBounds = true
+    }
+    
     func handleError(error:NSError)
     {
         print(error)
@@ -27,7 +32,7 @@ class BaseViewController : UIViewController
     
     func showAlert(title:String, message:String)
     {
-        let alert = UIAlertController(title: "Lo sentimos", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }

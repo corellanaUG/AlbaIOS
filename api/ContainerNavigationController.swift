@@ -10,10 +10,10 @@ import Foundation
 
 class ContainerNavigationController: UINavigationController
 {
-    var menuVC: REFrostedViewController!
+    var menuVC: REFrostedViewController?
     
     func openMenu()
     {        
-        menuVC.presentMenuViewController()
+        menuVC?.presentMenuViewController()
     }
 }
