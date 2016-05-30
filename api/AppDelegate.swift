@@ -9,13 +9,30 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class App: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    //Instancia global del cliente del api
+    static let webapi = WebApi(baseUrl: NSURL(string: "http://cines.softwarecj.com")!)
 
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    {
+        
+        let contenedor = ContainerNavigationController()
+        let menuNib = UINib(nibName: "MenuViewController", bundle: nil)
+        let menuVC = menuNib.instantiateWithOwner(nil, options: nil)[0] as! MenuViewController
+        menuVC.contentViewController = contenedor
+        
+        let refrostedvc = REFrostedViewController(contentViewController: contenedor, menuViewController: menuVC)
+        refrostedvc.direction = REFrostedViewControllerDirection.Left
+        refrostedvc.menuViewSize = CGSizeMake(0.65 * window!.frame.width, window!.frame.height)
+        refrostedvc.limitMenuViewSize = true
+        
+        contenedor.menuVC = refrostedvc
+        
+        window?.rootViewController = refrostedvc;
+        
         return true
     }
 
