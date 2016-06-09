@@ -15,9 +15,19 @@ class App: UIResponder, UIApplicationDelegate {
     
     //Instancia global del cliente del api
     static let webapi = WebApi(baseUrl: NSURL(string: "http://cines.softwarecj.com")!)
+    static var imagesUrl:NSURL!
+    static var imagenes = [String:UIImage?]()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
+        
+        App.webapi.getJson("/urlimg")
+        {
+            if let urlText = $0.json as? String
+            {
+                App.imagesUrl = NSURL(string: urlText)
+            }
+        }
         
         let contenedor = ContainerNavigationController()
         let menuNib = UINib(nibName: "MenuViewController", bundle: nil)
@@ -26,7 +36,7 @@ class App: UIResponder, UIApplicationDelegate {
         
         let refrostedvc = REFrostedViewController(contentViewController: contenedor, menuViewController: menuVC)
         refrostedvc.direction = REFrostedViewControllerDirection.Left
-        refrostedvc.menuViewSize = CGSizeMake(0.65 * window!.frame.width, window!.frame.height)
+        refrostedvc.menuViewSize = CGSizeMake(0.7 * window!.frame.width, window!.frame.height)
         refrostedvc.limitMenuViewSize = true
         
         contenedor.menuVC = refrostedvc

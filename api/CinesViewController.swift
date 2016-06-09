@@ -17,7 +17,7 @@ class CinesViewController: BaseMenuViewController, UITableViewDataSource, UITabl
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.title = "Cines"
+        self.title = "Cartelera"
     }
     
     override func viewWillAppear(animated: Bool)
@@ -52,7 +52,11 @@ class CinesViewController: BaseMenuViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         let cine = cines[indexPath.row]
-        let vc = UIViewController()
+        
+        let menuNib = UINib(nibName: "PeliculasCineViewController", bundle: nil)
+        let vc = menuNib.instantiateWithOwner(nil, options: nil)[0] as! PeliculasCineViewController
+        vc.cineID = cine["ID"] as? String
+        
         vc.title = cine["Name"] as? String
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -66,5 +70,9 @@ class CinesViewController: BaseMenuViewController, UITableViewDataSource, UITabl
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.5
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Seleccione una ubicación"
     }
 }

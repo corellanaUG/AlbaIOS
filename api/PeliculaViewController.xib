@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FuncionesViewController" customModule="Alba_Cinema" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController automaticallyAdjustsScrollViewInsets="NO" id="jT4-dU-DGZ" customClass="PeliculaViewController" customModule="Alba_Cinema" customModuleProvider="target">
+            <layoutGuides>
+                <viewControllerLayoutGuide type="top" id="WYq-qN-CDu"/>
+                <viewControllerLayoutGuide type="bottom" id="Zjd-Fg-XzN"/>
+            </layoutGuides>
+            <view key="view" contentMode="scaleToFill" id="pxN-ls-yqY">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8eF-LW-BcF">
+                        <rect key="frame" x="0.0" y="64" width="600" height="46"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGl-Jq-TAI">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="46"/>
+                                <items/>
+                            </toolbar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8jb-yR-rja">
+                                <rect key="frame" x="15" y="9" width="570" height="29"/>
+                                <segments>
+                                    <segment title="Horarios"/>
+                                    <segment title="Sinopsis"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8jb-yR-rja" firstAttribute="width" secondItem="8eF-LW-BcF" secondAttribute="width" multiplier="0.95" id="DrG-lZ-3VO"/>
+                            <constraint firstItem="xGl-Jq-TAI" firstAttribute="centerY" secondItem="8eF-LW-BcF" secondAttribute="centerY" id="NZv-ER-Dt8"/>
+                            <constraint firstItem="xGl-Jq-TAI" firstAttribute="width" secondItem="8eF-LW-BcF" secondAttribute="width" id="WjE-Sk-c7V"/>
+                            <constraint firstItem="8jb-yR-rja" firstAttribute="centerY" secondItem="8eF-LW-BcF" secondAttribute="centerY" id="hYS-0Q-qAy"/>
+                            <constraint firstItem="8jb-yR-rja" firstAttribute="centerX" secondItem="8eF-LW-BcF" secondAttribute="centerX" id="ovz-E0-OeI"/>
+                            <constraint firstItem="xGl-Jq-TAI" firstAttribute="height" secondItem="8eF-LW-BcF" secondAttribute="height" id="pm0-py-bh3"/>
+                            <constraint firstAttribute="height" constant="46" id="qzd-Xo-vat"/>
+                            <constraint firstItem="xGl-Jq-TAI" firstAttribute="centerX" secondItem="8eF-LW-BcF" secondAttribute="centerX" id="tjw-rm-1ie"/>
+                        </constraints>
+                    </view>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i8z-0r-cqN">
+                        <rect key="frame" x="0.0" y="110" width="600" height="490"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </tableView>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="8eF-LW-BcF" firstAttribute="width" secondItem="pxN-ls-yqY" secondAttribute="width" id="0Lz-rU-rfI"/>
+                    <constraint firstItem="i8z-0r-cqN" firstAttribute="centerX" secondItem="pxN-ls-yqY" secondAttribute="centerX" id="BQU-7n-xLz"/>
+                    <constraint firstItem="Zjd-Fg-XzN" firstAttribute="top" secondItem="i8z-0r-cqN" secondAttribute="bottom" id="K71-E9-B02"/>
+                    <constraint firstItem="8eF-LW-BcF" firstAttribute="top" secondItem="WYq-qN-CDu" secondAttribute="bottom" id="TpK-Id-3dz"/>
+                    <constraint firstItem="i8z-0r-cqN" firstAttribute="top" secondItem="8eF-LW-BcF" secondAttribute="bottom" id="WLo-hh-bpZ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="8eF-LW-BcF" secondAttribute="trailing" constant="-20" id="ZDf-KD-i2D"/>
+                    <constraint firstItem="8eF-LW-BcF" firstAttribute="leading" secondItem="pxN-ls-yqY" secondAttribute="leadingMargin" constant="-20" id="beg-My-5PI"/>
+                    <constraint firstItem="i8z-0r-cqN" firstAttribute="width" secondItem="pxN-ls-yqY" secondAttribute="width" id="gZG-DD-4Ly"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="0Lz-rU-rfI"/>
+                    </mask>
+                </variation>
+            </view>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <connections>
+                <outlet property="segmentedCtl" destination="8jb-yR-rja" id="nUH-L3-qcy"/>
+                <outlet property="tableView" destination="i8z-0r-cqN" id="qtz-rg-V3O"/>
+            </connections>
+            <point key="canvasLocation" x="474" y="178"/>
+        </viewController>
+    </objects>
+</document>

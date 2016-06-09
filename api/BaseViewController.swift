@@ -10,6 +10,8 @@ import Foundation
 
 class BaseViewController : UIViewController
 {
+    private var listeningToRotation = false
+    
     override func viewDidLoad()
     {
         self.view.clipsToBounds = true
@@ -41,4 +43,30 @@ class BaseViewController : UIViewController
     {
         showAlert("Lo sentimos", message: "Ha ocurrido un error de conexión.")
     }
+    
+    
+    func startListeningToRotation()
+    {
+        if !listeningToRotation
+        {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BaseViewController.rotated), name: UIDeviceOrientationDidChangeNotification, object: nil)
+        }
+    }
+    
+    func stopListeningToRotation()
+    {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    deinit
+    {
+        stopListeningToRotation()
+    }
+    
+    func rotated()
+    {
+        
+    }
+    
+    
 }

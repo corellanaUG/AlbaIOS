@@ -19,16 +19,26 @@ class WebApi
     
     func getJson(path:String, urlparams:[NSURLQueryItem]? = nil, bodyParams:[String:AnyObject]? = nil,method:String = "GET", done: (JsonResult) -> () )
     {
+        let request = createRequest(path, urlparams: urlparams, bodyParams: bodyParams, method: method)
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        sendRequest(request, done: {done(JsonResult(data: $0, response: $1, error: $2))})
+    }
+    
+    func getImage(path:String, urlparams:[NSURLQueryItem]? = nil, bodyParams:[String:AnyObject]? = nil,method:String = "GET", done: (ImageRsult) -> () )
+    {
+        let request = createRequest(path, urlparams: urlparams, bodyParams: bodyParams, method: method)
+        sendRequest(request, done: {done(ImageRsult(data: $0, response: $1, error: $2))})
+    }
+    
+    func createRequest(path:String, urlparams:[NSURLQueryItem]? = nil, bodyParams:[String:AnyObject]? = nil,method:String = "GET") -> NSMutableURLRequest
+    {
         let components = NSURLComponents(URL: baseUrl, resolvingAgainstBaseURL: false)!
-        components.path = path
+        components.path = (components.path ?? "") + path
         components.queryItems = urlparams
         
         let url = components.URL!
         let request = NSMutableURLRequest(URL: url)
-        let session = NSURLSession.sharedSession()
-        
         request.HTTPMethod = method
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         if let bodyParams = bodyParams
         {
@@ -38,15 +48,20 @@ class WebApi
         
         print(url)
         
+        return request
+    }
+    
+    func sendRequest(request: NSMutableURLRequest, done: (NSData?, NSURLResponse?, NSError?) -> ())
+    {
+        let session = NSURLSession.sharedSession()
         session.dataTaskWithRequest(request) { (data, response, error) in
-            dispatch_async(dispatch_get_main_queue(), {done(JsonResult(data: data, response: response, error: error))})
+            dispatch_async(dispatch_get_main_queue(), { done(data, response, error) })
         }.resume()
-    }        
+    }
 }
 
-class JsonResult
+class ApiResult
 {
-    var json:AnyObject?
     var error:NSError?
     var response:NSHTTPURLResponse?
     var data:NSData?
@@ -56,6 +71,16 @@ class JsonResult
         self.error = error
         self.response = response as? NSHTTPURLResponse
         self.data = data
+    }
+}
+
+class JsonResult : ApiResult
+{
+    var json:AnyObject?
+    
+    override init(data:NSData?, response:NSURLResponse?, error:NSError?)
+    {
+        super.init(data: data, response: response, error: error)
         
         if let data = data
         {
@@ -67,6 +92,20 @@ class JsonResult
                 NSLog("Error al deserializar json: %s ", error.localizedDescription)
             }
         }
+    }
+}
 
+class ImageRsult: ApiResult
+{
+    var image:UIImage?
+    
+    override init(data:NSData?, response:NSURLResponse?, error:NSError?)
+    {
+        super.init(data: data, response: response, error: error)
+        
+        if let data = data
+        {
+            image = UIImage(data: data)
+        }
     }
 }

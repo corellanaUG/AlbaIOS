@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="111" id="kah-kl-IzK" customClass="UbicacionCell" customModule="Alba_Cinema" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="348" height="111"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kah-kl-IzK" id="7a4-x6-elv">
+                <rect key="frame" x="0.0" y="0.0" width="348" height="110"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="usl-K6-lk4">
+                        <rect key="frame" x="0.0" y="0.0" width="352" height="114"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ubicación" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXy-zn-JnF">
+                                <rect key="frame" x="8" y="14" width="324" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ParkingInfo" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPW-zQ-4p6">
+                                <rect key="frame" x="12" y="81" width="332" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address 2" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdG-yo-roM">
+                                <rect key="frame" x="12" y="59" width="332" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address 1" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gB-1D-gXg">
+                                <rect key="frame" x="12" y="39" width="332" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gdG-yo-roM" firstAttribute="top" secondItem="9gB-1D-gXg" secondAttribute="bottom" constant="4" id="1m4-Ih-a6U"/>
+                            <constraint firstItem="lXy-zn-JnF" firstAttribute="top" secondItem="usl-K6-lk4" secondAttribute="top" constant="14" id="5rR-aX-LtJ"/>
+                            <constraint firstAttribute="trailing" secondItem="UPW-zQ-4p6" secondAttribute="trailing" constant="8" id="FF1-qA-MCw"/>
+                            <constraint firstItem="UPW-zQ-4p6" firstAttribute="leading" secondItem="usl-K6-lk4" secondAttribute="leading" constant="12" id="Mf3-Rl-ScK"/>
+                            <constraint firstItem="gdG-yo-roM" firstAttribute="leading" secondItem="usl-K6-lk4" secondAttribute="leading" constant="12" id="Sq0-9T-F8u"/>
+                            <constraint firstAttribute="trailing" secondItem="lXy-zn-JnF" secondAttribute="trailing" constant="20" id="Sug-PX-F3h"/>
+                            <constraint firstItem="9gB-1D-gXg" firstAttribute="leading" secondItem="usl-K6-lk4" secondAttribute="leading" constant="12" id="W7V-Tk-nge"/>
+                            <constraint firstAttribute="bottom" secondItem="UPW-zQ-4p6" secondAttribute="bottom" constant="17" id="b42-J2-f6s"/>
+                            <constraint firstItem="9gB-1D-gXg" firstAttribute="top" secondItem="lXy-zn-JnF" secondAttribute="bottom" constant="4" id="mCI-EM-jMX"/>
+                            <constraint firstAttribute="trailing" secondItem="gdG-yo-roM" secondAttribute="trailing" constant="8" id="noQ-7K-Ql0"/>
+                            <constraint firstItem="lXy-zn-JnF" firstAttribute="leading" secondItem="usl-K6-lk4" secondAttribute="leading" constant="8" id="tKl-fz-VK9"/>
+                            <constraint firstAttribute="trailing" secondItem="9gB-1D-gXg" secondAttribute="trailing" constant="8" id="uLy-d8-dpS"/>
+                            <constraint firstItem="UPW-zQ-4p6" firstAttribute="top" secondItem="gdG-yo-roM" secondAttribute="bottom" constant="6" id="wpt-qu-AJn"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="usl-K6-lk4" secondAttribute="trailing" constant="-12" id="Jc3-dN-bHy"/>
+                    <constraint firstItem="usl-K6-lk4" firstAttribute="top" secondItem="7a4-x6-elv" secondAttribute="topMargin" constant="-8" id="eaM-0s-ryI"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="usl-K6-lk4" secondAttribute="bottom" constant="-12" id="j3N-Dt-KNC"/>
+                    <constraint firstItem="usl-K6-lk4" firstAttribute="leading" secondItem="7a4-x6-elv" secondAttribute="leadingMargin" constant="-8" id="lsM-eS-S9L"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lblAddress1" destination="9gB-1D-gXg" id="7D0-Ms-vfq"/>
+                <outlet property="lblAddress2" destination="gdG-yo-roM" id="pNC-2Y-lzQ"/>
+                <outlet property="lblParkingInfo" destination="UPW-zQ-4p6" id="6N7-U5-Jdp"/>
+                <outlet property="lblUbicacion" destination="lXy-zn-JnF" id="XKt-e5-l0Q"/>
+            </connections>
+            <point key="canvasLocation" x="476" y="318.5"/>
+        </tableViewCell>
+    </objects>
+</document>

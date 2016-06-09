@@ -11,9 +11,20 @@ import Foundation
 class ContainerNavigationController: UINavigationController
 {
     var menuVC: REFrostedViewController?
+    var panGestureRecognizer:UIPanGestureRecognizer!
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ContainerNavigationController.openMenu))
+        self.view.addGestureRecognizer(panGestureRecognizer)
+    }
     
     func openMenu()
-    {        
-        menuVC?.presentMenuViewController()
+    {
+        if panGestureRecognizer.velocityInView(view).x >= 0
+        {
+            menuVC?.presentMenuViewController()
+        }
+        
     }
 }

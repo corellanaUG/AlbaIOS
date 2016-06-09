@@ -21,12 +21,12 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //Opciones que aparecen en el menú
     private let items =
     [
-        MenuItem(nibName:"CinesViewController", iconName: "", name:"Cartelera"),
-        MenuItem(nibName:"CinesViewController", iconName: "", name:"Bistro"),
-        MenuItem(nibName:"CinesViewController", iconName: "", name:"Estreno"),
-        MenuItem(nibName:"CinesViewController", iconName: "", name:"Promociones"),
-        MenuItem(nibName:"CinesViewController", iconName: "", name:"Dulcería"),
-        MenuItem(nibName:"UbicacionesViewController", iconName: "", name:"Ubicaciones"),
+        MenuItem(nibName:"CinesViewController", iconName: "ticket", name:"Cartelera"),
+        MenuItem(nibName:"GalleryViewController", iconName: "bistro", name:"Bistro"),
+        MenuItem(nibName:"EstrenosViewController", iconName: "estrenos", name:"Estreno"),
+        MenuItem(nibName:"CinesViewController", iconName: "promo", name:"Promociones"),
+        MenuItem(nibName:"GalleryViewController", iconName: "dulceria", name:"Dulcería"),
+        MenuItem(nibName:"UbicacionesViewController", iconName: "location", name:"Ubicaciones"),
     ]
     
     //Reuse identifier para las celdas
