@@ -12,7 +12,7 @@ import Foundation
 //Deben de heredar de este viewcontroller
 class BaseMenuViewController: BaseViewController
 {
-    var menu: REFrostedViewController!
+    var menu: REFrostedViewController!    
     
     override func viewDidLoad()
     {

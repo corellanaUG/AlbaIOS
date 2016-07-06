@@ -14,6 +14,9 @@ class CinesViewController: BaseMenuViewController, UITableViewDataSource, UITabl
     
     var cines = [[String:AnyObject]]()
     
+    //Si no es null, es porque estamos escogiendo cine para un estreno
+    var peliEstreno:[String:AnyObject]?
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -22,7 +25,13 @@ class CinesViewController: BaseMenuViewController, UITableViewDataSource, UITabl
     
     override func viewWillAppear(animated: Bool)
     {
-        App.webapi.getJson("/cines", done:
+        if cines.count > 0 { llenarTabla(); return }
+        
+        var url = "/cines"
+        
+        if params?["bistro"] != nil { url = "/cines/bistro"}
+        
+        App.webapi.getJson(url, done:
         {
             if let error = $0.error { self.handleError(error); return }
             self.cines = $0.json as? [[String:AnyObject]] ?? []            
@@ -52,13 +61,30 @@ class CinesViewController: BaseMenuViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         let cine = cines[indexPath.row]
+        let next:UIViewController
         
-        let menuNib = UINib(nibName: "PeliculasCineViewController", bundle: nil)
-        let vc = menuNib.instantiateWithOwner(nil, options: nil)[0] as! PeliculasCineViewController
-        vc.cineID = cine["ID"] as? String
+        if let peliEstreno = peliEstreno
+        {
+            let nib = UINib(nibName: "PeliculaViewController", bundle: nil)
+            let vc = nib.instantiateWithOwner(nil, options: nil)[0] as! PeliculaViewController
+            
+            vc.title = "Horarios"
+            vc.pelicula = peliEstreno
+            vc.cineID = cine["ID"] as? String
+            //vc.fecha = self.fechas[fechaSeleccionada]            
+            next = vc
+        }
+        else
+        {
+            let menuNib = UINib(nibName: "PeliculasCineViewController", bundle: nil)
+            let vc = menuNib.instantiateWithOwner(nil, options: nil)[0] as! PeliculasCineViewController
+            vc.cineID = cine["ID"] as? String
+            vc.title = cine["Name"] as? String
+            next = vc
+        }
         
-        vc.title = cine["Name"] as? String
-        navigationController?.pushViewController(vc, animated: true)
+        
+        navigationController?.pushViewController(next, animated: true)
     }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -74,5 +100,23 @@ class CinesViewController: BaseMenuViewController, UITableViewDataSource, UITabl
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Seleccione una ubicación"
+    }
+}
+
+class CinesEstrenosViewController : CinesViewController
+{
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view = super.view
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

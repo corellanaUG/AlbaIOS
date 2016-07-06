@@ -17,10 +17,10 @@ class App: UIResponder, UIApplicationDelegate {
     static let webapi = WebApi(baseUrl: NSURL(string: "http://cines.softwarecj.com")!)
     static var imagesUrl:NSURL!
     static var imagenes = [String:UIImage?]()
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    static var fechas = [String]()
+    
+    static func getImgUrl()
     {
-        
         App.webapi.getJson("/urlimg")
         {
             if let urlText = $0.json as? String
@@ -28,6 +28,21 @@ class App: UIResponder, UIApplicationDelegate {
                 App.imagesUrl = NSURL(string: urlText)
             }
         }
+    }
+    
+    static func getFechas()
+    {
+        App.webapi.getJson("/peliculas/fechas", done:
+        {
+            let fechasJson = $0.json as? [[String:AnyObject]] ?? []
+            App.fechas = fechasJson.map( { $0["Fecha"] as? String ?? ""})
+        })
+    }
+
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    {
+        App.getImgUrl()
+        App.getFechas()
         
         let contenedor = ContainerNavigationController()
         let menuNib = UINib(nibName: "MenuViewController", bundle: nil)

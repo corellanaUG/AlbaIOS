@@ -32,13 +32,13 @@ class EstrenosViewController: BaseMenuViewController, UITableViewDataSource, UIT
     }
     
     override func viewWillAppear(animated: Bool)
-    {
+    {        
         App.webapi.getJson("/peliculas/estrenos", done:
-        //App.webapi.getJson("/peliculas/xcine/"+cineID, done:
-            {
-                if let error = $0.error { self.handleError(error); return }
-                self.peliculas = $0.json as? [[String:AnyObject]] ?? []
-                self.llenarTabla()
+        //App.webapi.getJson("/peliculas/xcine/9983", done:
+        {
+            if let error = $0.error { self.handleError(error); return }
+            self.peliculas = $0.json as? [[String:AnyObject]] ?? []
+            self.llenarTabla()
         })
     }
     
@@ -90,10 +90,10 @@ class EstrenosViewController: BaseMenuViewController, UITableViewDataSource, UIT
         else if imgPath != ""
         {
             imagenesApi?.getImage(imgPath, done:
-                {
-                    let imgOrDefault = $0.image ?? UIImage(named: "no-image")
-                    cell.imgPelicula.image = imgOrDefault
-                    App.imagenes[imgPath] = imgOrDefault
+            {
+                let imgOrDefault = $0.image ?? UIImage(named: "no-image")
+                cell.imgPelicula.image = imgOrDefault
+                App.imagenes[imgPath] = imgOrDefault
             })
         }
         
@@ -108,15 +108,19 @@ class EstrenosViewController: BaseMenuViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-    {/*
-        let pelicula = peliculas[indexPath.row]
-        let menuNib = UINib(nibName: "PeliculaViewController", bundle: nil)
-        let vc = menuNib.instantiateWithOwner(nil, options: nil)[0] as! PeliculaViewController
-        
-        vc.title = "Horarios"
-        vc.pelicula = pelicula
-        vc.cineID = cineID
-        navigationController?.pushViewController(vc, animated: true)*/
+    {
+        let nombre = peliculas[indexPath.row]["Name"] as? String ?? ""
+        App.webapi.getJson("/cines/xpelicula/" + nombre, done:
+        {
+            if let error = $0.error { self.handleError(error); return }
+            let cines = $0.json as? [[String:AnyObject]] ?? []
+            let cinesNib = UINib(nibName: "CinesViewController", bundle: nil)
+            let vc = cinesNib.instantiateWithOwner(nil, options: nil)[0] as! CinesViewController
+            vc.cines = cines
+            vc.peliEstreno = self.peliculas[indexPath.row]
+            vc.navigationItem.leftBarButtonItem = nil
+            self.navigationController?.pushViewController(vc, animated: true)
+        })
     }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

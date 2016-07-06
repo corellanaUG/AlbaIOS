@@ -72,7 +72,7 @@ class UbicacionesViewController: BaseMenuViewController, UITableViewDelegate, UI
             let query = "?ll=" + lat + "," + lng
             let wazeUrl = "waze://" + query
             let mapsUrl = "http://maps.apple.com/" + query
-            let canOpenWaze = UIApplication.sharedApplication().canOpenURL(NSURL(string: wazeUrl)!)
+            let canOpenWaze = UIApplication.sharedApplication().canOpenURL(NSURL(string: "waze://")!)
             
             UIApplication.sharedApplication().openURL(NSURL(string: canOpenWaze ? wazeUrl : mapsUrl )!)
         }

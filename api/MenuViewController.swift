@@ -22,10 +22,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private let items =
     [
         MenuItem(nibName:"CinesViewController", iconName: "ticket", name:"Cartelera"),
-        MenuItem(nibName:"GalleryViewController", iconName: "bistro", name:"Bistro"),
-        MenuItem(nibName:"EstrenosViewController", iconName: "estrenos", name:"Estreno"),
-        MenuItem(nibName:"CinesViewController", iconName: "promo", name:"Promociones"),
-        MenuItem(nibName:"GalleryViewController", iconName: "dulceria", name:"Dulcería"),
+        MenuItem(nibName:"BistroViewController", iconName: "bistro", name:"Bistro", params: ["bistro":true]),
+        MenuItem(nibName:"EstrenosViewController", iconName: "estrenos", name:"Estrenos"),
+        MenuItem(nibName:"GalleryViewController", iconName: "promo", name:"Promociones", params: ["path":"/Promociones", "title":"Promociones"]),
+        MenuItem(nibName:"GalleryViewController", iconName: "dulceria", name:"Dulcería", params: ["path":"/Promociones"]),
         MenuItem(nibName:"UbicacionesViewController", iconName: "location", name:"Ubicaciones"),
     ]
     
@@ -68,7 +68,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func selectItem(position:Int)
     {
         let nib = UINib(nibName: items[position].nibName, bundle: nil)
-        let vc = nib.instantiateWithOwner(nil, options: nil)[0] as! UIViewController
+        let vc = nib.instantiateWithOwner(nil, options: nil)[0] as! BaseViewController
+        vc.params = items[position].params
         contentViewController.viewControllers = [vc]
         contentViewController.menuVC?.hideMenuViewController()
     }
@@ -90,11 +91,13 @@ class MenuItem
     let nibName:String
     let iconName:String
     let name:String
+    let params:[String:AnyObject]?
     
-    init(nibName:String, iconName:String, name:String)
+    init(nibName:String, iconName:String, name:String, params:[String:AnyObject]? = nil)
     {
         self.nibName = nibName
         self.iconName = iconName
         self.name = name
+        self.params = params
     }
 }

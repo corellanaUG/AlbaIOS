@@ -10,6 +10,7 @@ import Foundation
 
 class BaseViewController : UIViewController
 {
+    var params: [String:AnyObject]?
     private var listeningToRotation = false
     
     override func viewDidLoad()

@@ -21,13 +21,40 @@ class GalleryViewController: BaseMenuViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         self.view.clipsToBounds = true
         scrollView.delegate = self
-        pageImages = [UIImage(named:"alice-banner")!, UIImage(named:"alice-banner")!, UIImage(named:"alice-banner")!, UIImage(named:"alice-banner")!]
+        //pageImages = [UIImage(named:"alice-banner")!, UIImage(named:"alice-banner")!, UIImage(named:"alice-banner")!, UIImage(named:"alice-banner")!]
         startListeningToRotation()
     }
     
     override func viewDidAppear(animated: Bool) {
-        setUp()
-        
+        self.title = self.params?["title"] as? String
+        getImages()
+    }
+    
+    func getImages()
+    {
+        if let path = params?["path"] as? String
+        {
+            App.webapi.getJson(path, done:
+            {
+                if let imgPaths = $0.json as? [String]
+                {
+                    for imgPath in imgPaths
+                    {
+                        App.webapi.getImage(imgPath, useBaseUrl:false, done:
+                        {
+                            if let img = $0.image
+                            {
+                                self.pageImages.append(img)
+                            }
+                            if self.pageImages.count == imgPaths.count
+                            {
+                                self.setUp()
+                            }
+                        })
+                    }
+                }
+            })
+        }
     }
     
     func setUp()

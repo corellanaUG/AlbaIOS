@@ -17,26 +17,38 @@ class WebApi
         self.baseUrl = baseUrl
     }
     
-    func getJson(path:String, urlparams:[NSURLQueryItem]? = nil, bodyParams:[String:AnyObject]? = nil,method:String = "GET", done: (JsonResult) -> () )
+    func getJson(path:String, urlparams:[NSURLQueryItem]? = nil, bodyParams:[String:AnyObject]? = nil,
+                 method:String = "GET", useBaseUrl:Bool = true, done: (JsonResult) -> () )
     {
-        let request = createRequest(path, urlparams: urlparams, bodyParams: bodyParams, method: method)
+        let request = createRequest(path, urlparams: urlparams, bodyParams: bodyParams, method: method, useBaseUrl: useBaseUrl)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         sendRequest(request, done: {done(JsonResult(data: $0, response: $1, error: $2))})
     }
     
-    func getImage(path:String, urlparams:[NSURLQueryItem]? = nil, bodyParams:[String:AnyObject]? = nil,method:String = "GET", done: (ImageRsult) -> () )
+    func getImage(path:String, urlparams:[NSURLQueryItem]? = nil, bodyParams:[String:AnyObject]? = nil,
+                  method:String = "GET", useBaseUrl:Bool = true, done: (ImageRsult) -> () )
     {
-        let request = createRequest(path, urlparams: urlparams, bodyParams: bodyParams, method: method)
+        let request = createRequest(path, urlparams: urlparams, bodyParams: bodyParams, method: method, useBaseUrl: useBaseUrl)
         sendRequest(request, done: {done(ImageRsult(data: $0, response: $1, error: $2))})
     }
     
-    func createRequest(path:String, urlparams:[NSURLQueryItem]? = nil, bodyParams:[String:AnyObject]? = nil,method:String = "GET") -> NSMutableURLRequest
+    func createRequest(path:String, urlparams:[NSURLQueryItem]? = nil, bodyParams:[String:AnyObject]? = nil,
+                       method:String = "GET", useBaseUrl:Bool = true) -> NSMutableURLRequest
     {
-        let components = NSURLComponents(URL: baseUrl, resolvingAgainstBaseURL: false)!
-        components.path = (components.path ?? "") + path
-        components.queryItems = urlparams
+        let url:NSURL
+        if useBaseUrl
+        {
+            let components = NSURLComponents(URL: baseUrl, resolvingAgainstBaseURL: false)!
+            components.path = (components.path ?? "") + path
+            components.queryItems = urlparams
+            url = components.URL!
+        }
+        else
+        {
+            url = NSURL(string: path)!
+        }
         
-        let url = components.URL!
+        
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = method
         
