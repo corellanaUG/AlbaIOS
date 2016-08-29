@@ -19,6 +19,7 @@ class PeliculasCineViewController: BaseViewController, UITableViewDataSource, UI
     var fechas = [String]()
     var fechaSeleccionada = 0
     var menuFechas:BTNavigationDropdownMenu!
+    var bistro = false
     
     let peliculasCellID = "peliculas"
     
@@ -54,7 +55,13 @@ class PeliculasCineViewController: BaseViewController, UITableViewDataSource, UI
 
     func getPeliculas()
     {
-        let params = [NSURLQueryItem(name: "fecha", value: fechas[fechaSeleccionada])]
+        var params = [NSURLQueryItem(name: "fecha", value: fechas[fechaSeleccionada])]
+        
+        if bistro
+        {
+            params.append(NSURLQueryItem(name: "bistro", value: "1"))
+        }
+        
         App.webapi.getJson("/peliculas/xcine2/"+cineID, urlparams: params, done:
         {
             if let error = $0.error { self.handleError(error); return }
@@ -72,7 +79,18 @@ class PeliculasCineViewController: BaseViewController, UITableViewDataSource, UI
     
     func llenarFechas()
     {
+        if self.navigationController == nil
+        {
+            print("mew")
+            return
+        }
+        
+        
+        
         menuFechas = BTNavigationDropdownMenu(navigationController: self.navigationController, title: fechas.first!, items: fechas)
+        
+        
+        
         menuFechas.cellHeight = 30
         menuFechas.cellTextLabelFont = UIFont.systemFontOfSize(14, weight: 0.1)
         menuFechas.cellTextLabelAlignment = .Center
@@ -86,6 +104,8 @@ class PeliculasCineViewController: BaseViewController, UITableViewDataSource, UI
             self.fechaSeleccionada = $0
             self.getPeliculas()
         };
+        
+        self.navigationItem.titleView =  menuFechas
     }
     
     override func viewWillDisappear(animated: Bool)
@@ -98,7 +118,7 @@ class PeliculasCineViewController: BaseViewController, UITableViewDataSource, UI
     }
     
     override func viewDidAppear(animated: Bool) {
-        self.navigationItem.titleView =  menuFechas
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -156,6 +176,7 @@ class PeliculasCineViewController: BaseViewController, UITableViewDataSource, UI
         {
             cell.imgPelicula.image = UIImage(named: "no-image")
         }
+        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
@@ -168,6 +189,7 @@ class PeliculasCineViewController: BaseViewController, UITableViewDataSource, UI
         vc.pelicula = pelicula
         vc.cineID = cineID
         vc.fecha = self.fechas[fechaSeleccionada]
+        vc.bistro = self.bistro
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -180,6 +202,10 @@ class PeliculasCineViewController: BaseViewController, UITableViewDataSource, UI
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.5
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.title
     }
     
 }

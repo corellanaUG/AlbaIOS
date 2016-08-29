@@ -27,6 +27,8 @@
 		3B2EDFEF1CFCCC5D0078F3D9 /* WebApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EDFEE1CFCCC5D0078F3D9 /* WebApi.swift */; };
 		3B2EDFF11CFCDED70078F3D9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EDFF01CFCDED70078F3D9 /* BaseViewController.swift */; };
 		3B2EDFF31CFCFD830078F3D9 /* UbicacionesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EDFF21CFCFD830078F3D9 /* UbicacionesViewController.swift */; };
+		3B48A8821D748BBE00A14323 /* ProximosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B48A8811D748BBE00A14323 /* ProximosViewController.swift */; };
+		3B48A8841D74AA7B00A14323 /* ProximosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B48A8831D74AA7B00A14323 /* ProximosViewController.xib */; };
 		3B5738F71CFDED2800CE8227 /* UbicacionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B5738F61CFDED2800CE8227 /* UbicacionCell.xib */; };
 		3B5738F91CFDFDD100CE8227 /* UbicacionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5738F81CFDFDD100CE8227 /* UbicacionCell.swift */; };
 		3B62267A1D00CA710007ED55 /* PeliculaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6226791D00CA710007ED55 /* PeliculaCell.swift */; };
@@ -78,6 +80,8 @@
 		3B2EDFEE1CFCCC5D0078F3D9 /* WebApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebApi.swift; sourceTree = "<group>"; };
 		3B2EDFF01CFCDED70078F3D9 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		3B2EDFF21CFCFD830078F3D9 /* UbicacionesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UbicacionesViewController.swift; sourceTree = "<group>"; };
+		3B48A8811D748BBE00A14323 /* ProximosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProximosViewController.swift; sourceTree = "<group>"; };
+		3B48A8831D74AA7B00A14323 /* ProximosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProximosViewController.xib; sourceTree = "<group>"; };
 		3B5738F61CFDED2800CE8227 /* UbicacionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UbicacionCell.xib; sourceTree = "<group>"; };
 		3B5738F81CFDFDD100CE8227 /* UbicacionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UbicacionCell.swift; sourceTree = "<group>"; };
 		3B6226791D00CA710007ED55 /* PeliculaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeliculaCell.swift; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 				3B02C7981CFF519100DE5B21 /* PeliculasCineViewController.swift */,
 				3B2A66D31D02040300D0E671 /* PeliculaViewController.swift */,
 				3B2EDFF21CFCFD830078F3D9 /* UbicacionesViewController.swift */,
+				3B48A8811D748BBE00A14323 /* ProximosViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 				3BE5071B1D0870E700D32C7E /* GalleryViewController.xib */,
 				3BC808D81D09BD3800870223 /* EstrenosViewController.xib */,
 				3BAD0B5F1D2D5B7500F3900D /* BistroViewController.xib */,
+				3B48A8831D74AA7B00A14323 /* ProximosViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -402,6 +408,7 @@
 				3B2EDFD61CFC98390078F3D9 /* MenuViewController.xib in Resources */,
 				3B2EDFD81CFC999D0078F3D9 /* CinesViewController.xib in Resources */,
 				3BC808D91D09BD3800870223 /* EstrenosViewController.xib in Resources */,
+				3B48A8841D74AA7B00A14323 /* ProximosViewController.xib in Resources */,
 				3B2EDFEC1CFCB5C60078F3D9 /* UbicacionesViewController.xib in Resources */,
 				3B5738F71CFDED2800CE8227 /* UbicacionCell.xib in Resources */,
 			);
@@ -481,6 +488,7 @@
 				3B2EDFE31CFCAB590078F3D9 /* MenuViewController.swift in Sources */,
 				3BAB9AED1CFC95D400C319CF /* AppDelegate.swift in Sources */,
 				3BE5070C1D05F50700D32C7E /* HorarioCell.swift in Sources */,
+				3B48A8821D748BBE00A14323 /* ProximosViewController.swift in Sources */,
 				3B2EDFE01CFCA0E10078F3D9 /* ContainerNavigationController.swift in Sources */,
 				3B2EDFEF1CFCCC5D0078F3D9 /* WebApi.swift in Sources */,
 				3B2EDFEA1CFCB0000078F3D9 /* MenuItemCell.swift in Sources */,

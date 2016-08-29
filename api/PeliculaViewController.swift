@@ -27,6 +27,7 @@ class PeliculaViewController: BaseViewController, UITableViewDelegate {
     let sinopsisDataSource = SinopsisDataSource()
     var fechas = [String]()
     var menuFechas:BTNavigationDropdownMenu!
+    var bistro = false
     private var estreno = false
 
     static let horarioCellID = "horario"
@@ -73,9 +74,14 @@ class PeliculaViewController: BaseViewController, UITableViewDelegate {
     func getHorarios()
     {
         let peliID = pelicula["Name"] as! String
-        let fecha = [NSURLQueryItem(name: "fecha", value: self.fecha)]
+        var params = [NSURLQueryItem(name: "fecha", value: self.fecha)]
         
-        App.webapi.getJson("/peliculas/xhorario2/"+cineID+"/"+peliID, urlparams: fecha, done:
+        if bistro
+        {
+            params.append(NSURLQueryItem(name: "bistro", value: "1"))
+        }
+        
+        App.webapi.getJson("/peliculas/xhorario2/"+cineID+"/"+peliID, urlparams: params, done:
         {
             if let error = $0.error { self.handleError(error); return }
             if let horarios = $0.json as? [[String:AnyObject]]

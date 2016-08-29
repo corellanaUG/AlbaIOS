@@ -80,6 +80,12 @@ class CinesViewController: BaseMenuViewController, UITableViewDataSource, UITabl
             let vc = menuNib.instantiateWithOwner(nil, options: nil)[0] as! PeliculasCineViewController
             vc.cineID = cine["ID"] as? String
             vc.title = cine["Name"] as? String
+            
+            if params?["bistro"] != nil
+            {
+                vc.bistro = true
+            }
+            
             next = vc
         }
         
