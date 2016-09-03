@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -66,37 +66,37 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clasificación:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9t3-LF-3cc">
                         <rect key="frame" x="111" y="151" width="85" height="17"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O9J-us-BYM">
                         <rect key="frame" x="204" y="151" width="35" height="17"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpb-fO-9EI">
                         <rect key="frame" x="170" y="174" width="35" height="17"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Género:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AR-0m-THo">
                         <rect key="frame" x="111" y="174" width="51" height="17"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duración:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scg-nH-IF4">
                         <rect key="frame" x="111" y="197" width="62" height="17"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRP-gq-fnA">
                         <rect key="frame" x="181" y="197" width="35" height="17"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -122,9 +122,11 @@
                     <constraint firstItem="Scg-nH-IF4" firstAttribute="baseline" secondItem="yRP-gq-fnA" secondAttribute="baseline" id="bIT-bV-eWU"/>
                     <constraint firstItem="8eF-LW-BcF" firstAttribute="leading" secondItem="pxN-ls-yqY" secondAttribute="leadingMargin" constant="-20" id="beg-My-5PI"/>
                     <constraint firstItem="9t3-LF-3cc" firstAttribute="top" secondItem="azX-wl-KfR" secondAttribute="bottom" constant="8" id="dS0-L5-TVR"/>
+                    <constraint firstItem="veD-9n-FXq" firstAttribute="top" secondItem="8eF-LW-BcF" secondAttribute="bottom" constant="4" id="eiI-m0-g5U"/>
                     <constraint firstItem="3AR-0m-THo" firstAttribute="top" secondItem="9t3-LF-3cc" secondAttribute="bottom" constant="6" id="euU-tI-fmm"/>
                     <constraint firstItem="i8z-0r-cqN" firstAttribute="top" secondItem="veD-9n-FXq" secondAttribute="bottom" constant="8" id="gJF-n8-aC9"/>
                     <constraint firstItem="i8z-0r-cqN" firstAttribute="width" secondItem="pxN-ls-yqY" secondAttribute="width" id="gZG-DD-4Ly"/>
+                    <constraint firstItem="azX-wl-KfR" firstAttribute="top" secondItem="8eF-LW-BcF" secondAttribute="bottom" constant="12" id="oiP-xz-HPP"/>
                     <constraint firstItem="Gpb-fO-9EI" firstAttribute="leading" secondItem="3AR-0m-THo" secondAttribute="trailing" constant="8" id="ox7-we-4Y6"/>
                     <constraint firstItem="O9J-us-BYM" firstAttribute="baseline" secondItem="9t3-LF-3cc" secondAttribute="baseline" id="v87-9v-aMJ"/>
                     <constraint firstItem="azX-wl-KfR" firstAttribute="leading" secondItem="veD-9n-FXq" secondAttribute="trailing" constant="8" id="yXz-6S-f15"/>
@@ -132,6 +134,8 @@
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="0Lz-rU-rfI"/>
+                        <exclude reference="Gyi-hz-m1U"/>
+                        <exclude reference="ISM-o3-8r8"/>
                         <exclude reference="WLo-hh-bpZ"/>
                     </mask>
                 </variation>
@@ -144,6 +148,7 @@
                 <outlet property="lblGenero" destination="Gpb-fO-9EI" id="7Ok-Px-ZMI"/>
                 <outlet property="lblTitulo" destination="azX-wl-KfR" id="ME5-Cr-WaP"/>
                 <outlet property="segmentedCtl" destination="8jb-yR-rja" id="nUH-L3-qcy"/>
+                <outlet property="segmentedCtlContainerHeight" destination="qzd-Xo-vat" id="WIL-RY-gTe"/>
                 <outlet property="tableView" destination="i8z-0r-cqN" id="qtz-rg-V3O"/>
             </connections>
             <point key="canvasLocation" x="474" y="178"/>

@@ -98,6 +98,19 @@ class ProximosViewController: BaseMenuViewController, UITableViewDelegate, UITab
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        let pelicula = peliculas[indexPath.row]
+        let menuNib = UINib(nibName: "PeliculaViewController", bundle: nil)
+        let vc = menuNib.instantiateWithOwner(nil, options: nil)[0] as! PeliculaViewController
+        
+        vc.title = "Horarios"
+        vc.pelicula = pelicula
+        vc.proximoEstreno = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view =  UIView()
         view.frame = CGRectMake(0, 0, tableView.frame.width, 0.1)

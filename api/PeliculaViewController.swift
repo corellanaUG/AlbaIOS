@@ -18,6 +18,7 @@ class PeliculaViewController: BaseViewController, UITableViewDelegate {
     @IBOutlet weak var lblGenero: UILabel!
     @IBOutlet weak var lblDuracion: UILabel!
     @IBOutlet weak var lblTitulo: UILabel!
+    @IBOutlet weak var segmentedCtlContainerHeight: NSLayoutConstraint!
     
     var pelicula:[String:AnyObject?]!
     var header:HorarioPeliculaHeader!
@@ -28,6 +29,7 @@ class PeliculaViewController: BaseViewController, UITableViewDelegate {
     var fechas = [String]()
     var menuFechas:BTNavigationDropdownMenu!
     var bistro = false
+    var proximoEstreno = false
     private var estreno = false
 
     static let horarioCellID = "horario"
@@ -59,6 +61,16 @@ class PeliculaViewController: BaseViewController, UITableViewDelegate {
     override func viewWillAppear(animated: Bool)
     {
         llenarHeader()
+        
+        if proximoEstreno
+        {
+            segmentedCtl.selectedSegmentIndex = 1
+            segmentIndexChanged()
+            segmentedCtl.hidden = true            
+            title = "Sinopsis"
+            segmentedCtlContainerHeight.constant = 1.0
+            return
+        }
         
         if fecha != nil
         {
@@ -148,7 +160,11 @@ class PeliculaViewController: BaseViewController, UITableViewDelegate {
 
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.5
+        if tableView.dataSource == nil
+        {
+            return 0
+        }
+        return (tableView.dataSource! is HorariosDataSource) ? 0.5 : 0
     }
     
     
@@ -193,6 +209,7 @@ class HorariosDataSource : NSObject, UITableViewDataSource
         }
         cell.lblAttr.text = attrString
         cell.lblSala.text = (funcion["Sala"] as? String)?.capitalizedString
+        cell.selectionStyle = .None
         
         return cell
     }
@@ -213,6 +230,7 @@ class SinopsisDataSource : NSObject, UITableViewDataSource
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(PeliculaViewController.sinopsisCellID, forIndexPath: indexPath) as! SinopsisCell
         cell.lblSinopsis.text = sinopsis
+        cell.selectionStyle = .None
         return cell
     }
     

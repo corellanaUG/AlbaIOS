@@ -24,7 +24,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         MenuItem(nibName:"CinesViewController", iconName: "ticket", name:"Cartelera"),
         MenuItem(nibName:"BistroViewController", iconName: "bistro", name:"Bistro", params: ["bistro":true]),
         MenuItem(nibName:"EstrenosViewController", iconName: "estrenos", name:"Estrenos"),
-        MenuItem(nibName:"ProximosViewController", iconName: "estrenos", name:"Próximamente"),
+        MenuItem(nibName:"ProximosViewController", iconName: "proximos", name:"Próximamente"),
         MenuItem(nibName:"GalleryViewController", iconName: "promo", name:"Promociones", params: ["path":"/Promociones", "title":"Promociones"]),
         MenuItem(nibName:"GalleryViewController", iconName: "dulceria", name:"Dulcería", params: ["path":"/Dulceria", "title":"Dulcería"]),
         MenuItem(nibName:"UbicacionesViewController", iconName: "location", name:"Ubicaciones"),

@@ -14,7 +14,8 @@ class App: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     //Instancia global del cliente del api
-    static let webapi = WebApi(baseUrl: NSURL(string: "http://cines.softwarecj.com")!)
+    //static let webapi = WebApi(baseUrl: NSURL(string: "http://cines.softwarecj.com")!)
+    static let webapi = WebApi(baseUrl: NSURL(string: "https://ccn.albacinema.com.gt")!)
     static var imagesUrl:NSURL!
     static var imagenes = [String:UIImage?]()
     static var fechas = [String]()

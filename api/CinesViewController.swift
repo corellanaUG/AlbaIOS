@@ -34,7 +34,10 @@ class CinesViewController: BaseMenuViewController, UITableViewDataSource, UITabl
         App.webapi.getJson(url, done:
         {
             if let error = $0.error { self.handleError(error); return }
-            self.cines = $0.json as? [[String:AnyObject]] ?? []            
+            self.cines = $0.json as? [[String:AnyObject]] ?? []
+            
+            print(self.cines)
+            
             self.llenarTabla()
         })
     }
